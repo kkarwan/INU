@@ -1,0 +1,56 @@
+package Logowanie;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class UsersManager {
+
+	private ArrayList<UserName> arrayUsersProd;
+	private ArrayList<UserName> arrayUsersTest;
+	private ArrayList<UserName> arrayUsersDeve;
+	
+	private HashMap<Integer, ArrayList<UserName>> mapUsers;
+
+	public UsersManager() {
+		arrayUsersProd = new ArrayList<>();
+		arrayUsersTest = new ArrayList<>();
+		arrayUsersDeve = new ArrayList<>();
+		
+		arrayUsersProd.add(new UserName("adam.nowak"));
+		arrayUsersProd.add(new UserName("ewa.cicha"));
+		arrayUsersProd.add(new UserName("jan.kowalski"));
+		
+		arrayUsersTest.add(new UserName("jacek.placek"));
+		arrayUsersTest.add(new UserName("anna.panna"));
+		arrayUsersTest.add(new UserName("mariusz.byk"));
+		
+		arrayUsersDeve.add(new UserName("mateusz.pik"));
+		arrayUsersDeve.add(new UserName("olek.karo"));
+		arrayUsersDeve.add(new UserName("marek.trefl"));
+		
+		
+		mapUsers = new HashMap<>();
+		mapUsers.put(0, arrayUsersProd);
+		mapUsers.put(1, arrayUsersTest);
+		mapUsers.put(2, arrayUsersDeve);
+		
+		
+		
+	}
+
+	public ArrayList<UserName> getUserUsersProd() {
+		return arrayUsersProd;
+	}
+	public ArrayList<UserName> getArrayUsersTest() {
+		return arrayUsersTest;
+	}
+	public ArrayList<UserName> getArrayUsersDeve() {
+		return arrayUsersDeve;
+	}
+	public HashMap<Integer, ArrayList<UserName>> getMapUsers() {
+		return mapUsers;
+	}
+	public ArrayList<UserName> getArrayListNull(){
+		return null;
+	}
+}

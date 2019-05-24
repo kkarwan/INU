@@ -1,0 +1,19 @@
+package Logowanie;
+
+import java.util.ArrayList;
+
+public class UsersManager {
+
+	private ArrayList<UserName> arrayUsers;
+	
+	public UsersManager() {
+		arrayUsers = new ArrayList<>();
+		
+		arrayUsers.add(new UserName("adam.nowak"));
+		arrayUsers.add(new UserName("ewa.cicha"));
+		arrayUsers.add(new UserName("jan.kowalski"));
+	}
+	public ArrayList<UserName> getUserList(){
+		return arrayUsers;
+	}
+}

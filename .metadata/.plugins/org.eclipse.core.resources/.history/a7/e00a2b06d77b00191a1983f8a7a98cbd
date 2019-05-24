@@ -1,0 +1,14 @@
+package Logowanie;
+
+public class UsersName {
+
+	private String userName;
+
+	public UsersName(String userName) {
+		this.userName = userName;
+	}
+	@Override
+	public String toString() {
+		return this.userName;
+	}
+}

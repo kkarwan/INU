@@ -1,0 +1,5 @@
+package Logowanie;
+
+public enum Users {
+	adam.nowak, ewa.cudna, jan.kowalski;
+}

@@ -1,0 +1,46 @@
+package Logowanie;
+
+import java.util.ArrayList;
+
+public class UsersManager {
+
+	private ArrayList<UserName> arrayUsersProd;
+	private ArrayList<UserName> arrayUsersTest;
+	private ArrayList<UserName> arrayUsersDeve;
+	private ArrayList<UserName> arrayusersNull;
+
+	public UsersManager() {
+		arrayUsersProd = new ArrayList<>();
+		arrayUsersTest = new ArrayList<>();
+		arrayUsersDeve = new ArrayList<>();
+		arrayusersNull = new ArrayList<>();
+		
+		arrayUsersProd.add(new UserName("adam.nowak"));
+		arrayUsersProd.add(new UserName("ewa.cicha"));
+		arrayUsersProd.add(new UserName("jan.kowalski"));
+		
+		arrayUsersTest.add(new UserName("jacek.placek"));
+		arrayUsersTest.add(new UserName("anna.panna"));
+		arrayUsersTest.add(new UserName("mariusz.byk"));
+		
+		arrayUsersDeve.add(new UserName("mateusz.pik"));
+		arrayUsersDeve.add(new UserName("olek.karo"));
+		arrayUsersDeve.add(new UserName("marek.trefl"));
+		
+	}
+
+	public ArrayList<UserName> getArrayUsersProd() {
+		return arrayUsersProd;
+	}
+	public ArrayList<UserName> getArrayUsersTest() {
+		return arrayUsersTest;
+	}
+	public ArrayList<UserName> getArrayUsersDeve() {
+		return arrayUsersDeve;
+	}
+	
+	public ArrayList<UserName> getArrayusersNull() {
+		return arrayusersNull;
+	}
+	
+}

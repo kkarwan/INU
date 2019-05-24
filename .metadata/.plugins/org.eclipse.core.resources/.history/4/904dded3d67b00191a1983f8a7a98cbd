@@ -1,0 +1,14 @@
+package Logowanie;
+
+import java.util.ArrayList;
+
+public class UsersList {
+
+	private ArrayList<String> arrayList;
+	
+	public UsersList() {
+		arrayList = new ArrayList<UsersList>() {
+			
+		}
+	}
+}
