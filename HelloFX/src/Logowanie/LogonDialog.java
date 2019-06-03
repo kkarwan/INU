@@ -109,9 +109,7 @@ public class LogonDialog extends Application {
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
 				// TODO Auto-generated method stub
 
-				//System.out.println("Wartość "+intWartosc);
 				String user = cbxUsers.getSelectionModel().getSelectedItem().toString();
-				//System.out.println("Użytkownik: " + user);
 					
 				if (!user.isEmpty()) {
 					passField.setDisable(false);
@@ -138,10 +136,6 @@ public class LogonDialog extends Application {
 		grid.setVgap(10);
 		grid.setPadding(new Insets(20, 50, 20, 50));
 
-		ColumnConstraints constraints = new ColumnConstraints();
-		constraints.setHalignment(HPos.LEFT);
-
-		grid.getColumnConstraints().setAll(new ColumnConstraints(), constraints);
 
 		dialog.setResultConverter(dialogButton -> {
 			if (dialogButton == btnOK) {

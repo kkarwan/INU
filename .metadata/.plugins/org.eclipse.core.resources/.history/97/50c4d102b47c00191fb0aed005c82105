@@ -1,5 +1,0 @@
-package Logowanie;
-
-public enum Users {
-	adamnowak, ewacudna, jankowalski;
-}

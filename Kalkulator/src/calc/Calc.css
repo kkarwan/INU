@@ -1,0 +1,61 @@
+.digit{
+	-fx-background-color:#e0e0e0;
+	-fx-font-size:30;
+	-fx-background-radius:0;
+	-fx-border-color:#c0c0c0;
+	-fx-border-width:1;
+	-fx-alignment:center;
+}
+.digit:hover {
+	-fx-background-color:#c0c0c0;
+	-fx-font-size:32;
+}
+	
+.digit:pressed{
+	-fx-background-color:#ffffff;
+}
+
+
+.result{
+	-fx-background-color:#888;
+	-fx-text-fill:#FFF;
+	-fx-font-size:40;
+	
+}
+
+.special {
+	-fx-background-color:#90EE90;
+	-fx-font-size:30;
+	-fx-background-radius:0;
+	-fx-border-color:#c0c0c0;
+	-fx-border-width:1;
+	-fx-alignment:center;
+}
+
+.special:hover {
+	-fx-background-color:#30DE30;
+}
+.special:pressed{
+	-fx-background-color:#ffffff;
+	-fx-text-align:center;
+}
+
+.operators {
+-fx-alignment:center;
+	-fx-background-color:#FF8c00;
+	-fx-font-size:30;
+	-fx-background-radius:0;
+	-fx-border-color:#c0c0c0;
+	-fx-border-width:1;
+	-fx-text-fill:#FFF;
+}
+
+.operators:hover {
+	-fx-background-color:#FFaC20;
+	-fx-text-fill:#000;
+}
+.operators:pressed{
+	
+	-fx-background-color:#FFF;
+}
+
