@@ -33,7 +33,7 @@
             </Label>
             <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#specialAC" prefHeight="80.0" prefWidth="90.0" styleClass="special" text="AC" GridPane.rowIndex="1" />
             <Button contentDisplay="CENTER" onAction="#specialNegative" prefHeight="80.0" prefWidth="90.0" styleClass="special" text="+/-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button contentDisplay="CENTER" onAction="#specialModulo" prefHeight="80.0" prefWidth="90.0" styleClass="special" text="\%" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button contentDisplay="CENTER" onAction="#operators" prefHeight="80.0" prefWidth="90.0" styleClass="special" text="\%" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button contentDisplay="CENTER" onAction="#operators" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="7" GridPane.rowIndex="2" />
             <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
