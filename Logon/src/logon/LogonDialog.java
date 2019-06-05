@@ -1,159 +1,112 @@
 package logon;
 
 import java.util.Optional;
-
-import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 import javafx.util.Pair;
 
-public class LogonDialog extends Application {
+public class LogonDialog {
 
 	private Dialog<Pair<Environment, String>> dialog;
 	private ChoiceBox<Environment> cbxEnv;
-	private ComboBox<User> cbxUsers;
+	private ComboBox<String> cbxUsers;
 	private PasswordField passField;
 	private GridPane grid;
-	private Label lblEnv, lblUsers, lblPassField;
+	private Label lblEnv = new Label("≈örodowisko:");
+	private Label lblUsers = new Label("U≈ºytkownik:");
+	private Label lblPassField = new Label("Has≈Ço:");
+	private ButtonType btnOK = new ButtonType("Logon");
+	private ButtonType btnCancel = new ButtonType("Anuluj");
+	private final String naglowek = "Logowanie do systemu STYLEman";
+	private UsersDatabase usersDatabase = new UsersDatabase();
+	private Node btnOKNode;
 
-
-	// koniec definicji
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-
-	@Override
-	public void start(Stage stage) throws Exception {
+	public LogonDialog() {
 
 		dialog = new Dialog<>();
-		grid = new GridPane();
-
-		UsersManager managerUsers = new UsersManager();
-
-		ButtonType btnOK = new ButtonType("Logon", ButtonData.OK_DONE);
-		ButtonType btnCN = new ButtonType("Anuluj", ButtonData.CANCEL_CLOSE);
-
-		lblEnv = new Label("årodowisko:");
-		lblUsers = new Label("Uøytkownik:");
-		lblPassField = new Label("Has≥o:");
-
-		cbxEnv = new ChoiceBox<Environment>(FXCollections.observableArrayList(Environment.values()));
-		cbxUsers = new ComboBox<User>(FXCollections.observableArrayList(managerUsers.getArrayusersNull()));
-		passField = new PasswordField();
-
-		cbxUsers.setPromptText("Wybierz uøytkownika ...");
-		passField.setPromptText("Podaj has≥o ...");
-
-		cbxUsers.setDisable(true);
-		passField.setDisable(true);
-
-		dialog.getDialogPane().setContent(grid);
-		dialog.getDialogPane().getButtonTypes().addAll(btnOK, btnCN);
-		dialog.setGraphic(new ImageView(this.getClass().getResource("Login_64x.png").toString()));
 		dialog.setTitle("Logowanie");
-		dialog.setHeaderText("Logowanie do systemu STYLEman");
+		dialog.setHeaderText(naglowek);
+		dialog.getDialogPane().getButtonTypes().addAll(btnOK, btnCancel);
 
-		Node btnOKNode = dialog.getDialogPane().lookupButton(btnOK);
+		cbxEnv = new ChoiceBox<>(FXCollections.observableArrayList(Environment.values()));
+		cbxEnv.valueProperty().addListener((observable, oldVal, newVal) -> cbxEnvChange(newVal));
+
+		cbxUsers = new ComboBox<>();
+		cbxUsers.valueProperty().addListener((observable, oldVal, newVal) -> cbxUsers(newVal));
+
+		passField = new PasswordField();
+		passField.setDisable(true);
+		passField.textProperty()
+				.addListener((observable, oldVal, newVal) -> btnOKNode.setDisable(newVal.trim().isEmpty()));
+
+		btnOKNode = dialog.getDialogPane().lookupButton(btnOK);
 		btnOKNode.setDisable(true);
 
-		// obserwatorzy
-		cbxEnv.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+		this.setIconHeader();
+		this.setGridLayout();
 
-			@Override
-			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+		// ustawienie ≈õrodowiska Produkcyjnego jako domyslne
+		cbxEnv.setValue(Environment.Produkcyjne);
 
-				// wyczyszczenie pola User przy zmianie srodowiska
-				cbxUsers.setValue(null);
-				Integer intWartosc = null;
+		Optional<Pair<Environment, String>> result = dialog.showAndWait();
 
-				// zmiana listy kont w zaleznosci od wybory srodowiska
-				if ((Integer) arg2 == 0) {
-					cbxUsers.setDisable(false);
-					intWartosc = 0;
-					cbxUsers.getItems().clear();
-					cbxUsers.getItems().addAll(managerUsers.getArrayUsersProd());
-				} else if ((Integer) arg2 == 1) {
-					cbxUsers.setDisable(false);
-					intWartosc = 1;
-					cbxUsers.getItems().clear();
-					cbxUsers.getItems().addAll(managerUsers.getArrayUsersTest());
-				} else if ((Integer) arg2 == 2) {
-					cbxUsers.setDisable(false);
-					intWartosc = 2;
-					cbxUsers.getItems().clear();
-					cbxUsers.getItems().addAll(managerUsers.getArrayUsersDeve());
-				}
+		if (result.toString().contains("Logon")) {
+			if (usersDatabase.checkPassword(cbxUsers.getValue().toString(), passField.getText())) {
+				System.out.println("User: " + cbxUsers.getValue().toString() + " zalogowany");
+			} else {
+				System.out.println("Nieprawid≈Çowe dane logowania");
 			}
-		});
+		}
 
+	}
 
-		cbxUsers.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+	private void cbxEnvChange(Environment value) {
 
-			@Override
-			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-				// TODO Auto-generated method stub
+		cbxUsers.getItems().clear();
+		usersDatabase.defaultUsers(cbxEnv.getValue());
 
-				String user = cbxUsers.getSelectionModel().getSelectedItem().toString();
-					
-				if (!user.isEmpty()) {
-					passField.setDisable(false);
-				} else {
-					passField.setDisable(true);
-				}
-			}
-		});
-		
-		passField.textProperty().addListener((observable, oldValue, newValue) -> {
-			btnOKNode.setDisable(newValue.trim().isEmpty());
-		});
+		for (String s : usersDatabase.getUsers().keySet()) {
+			cbxUsers.getItems().add(s);
+		}
+	}
 
-		// ustawienie szerokosci
+	private void cbxUsers(String value) {
+		if (value.equals("")) {
+			passField.setDisable(true);
+		} else {
+			passField.setDisable(false);
+		}
+	}
+
+	private void setIconHeader() {
+		dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Login_64x.png"))));
+	}
+
+	private void setGridLayout() {
+		grid = new GridPane();
 		cbxEnv.setPrefWidth(200);
 		cbxUsers.setPrefWidth(200);
 		cbxUsers.setEditable(true);
 		passField.setPrefWidth(200);
-
+		cbxUsers.setPromptText("Wybierz u≈ºytkownika ...");
+		passField.setPromptText("Podaj has≈Ço ...");
 		grid.addRow(0, lblEnv, cbxEnv);
 		grid.addRow(1, lblUsers, cbxUsers);
 		grid.addRow(2, lblPassField, passField);
 		grid.setHgap(30);
 		grid.setVgap(10);
 		grid.setPadding(new Insets(20, 50, 20, 50));
-
-
-		dialog.setResultConverter(dialogButton -> {
-			if (dialogButton == btnOK) {
-				return new Pair<>(cbxEnv.getValue(), passField.getText());
-			}
-			return null;
-		});
-
-		
-			Optional<Pair<Environment, String>> result = dialog.showAndWait();
-			result.ifPresent(passField -> {
-				System.out.println("Uøytkownik = " + cbxUsers.getValue() + ", Has≥o = " + passField.getValue());
-			});
-	}
-
-	@Override
-	public void stop() throws Exception {
+		dialog.getDialogPane().setContent(grid);
 
 	}
-
 }

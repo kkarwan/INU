@@ -14,7 +14,7 @@ public class CalcApp extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		System.out.println("Kalkulator");
+		
 		Parent root = FXMLLoader.load(getClass().getResource("CalcUI.fxml"));
 		
 		primaryStage.setScene(new Scene(root));

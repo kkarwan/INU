@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane minHeight="480.0" minWidth="360.0" prefHeight="480.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calc.CalcController">
+<AnchorPane minHeight="480.0" minWidth="360.0" prefHeight="480.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calc.CalcController2">
    <children>
       <GridPane prefHeight="480.0" prefWidth="360.0" stylesheets="@Calc.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -26,30 +26,30 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="result" alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="360.0" styleClass="result" stylesheets="@Calc.css" text="0" GridPane.columnSpan="2147483647">
+            <Label fx:id="output" alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="360.0" styleClass="result" stylesheets="@Calc.css" text="0" GridPane.columnSpan="2147483647">
                <padding>
                   <Insets right="10.0" />
                </padding>
             </Label>
             <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#specialAC" prefHeight="80.0" prefWidth="90.0" styleClass="special" text="AC" GridPane.rowIndex="1" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#specialNegative" prefHeight="80.0" prefWidth="90.0" styleClass="special" text="+/-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" styleClass="special" text="\%" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="7" GridPane.rowIndex="2" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="4" GridPane.rowIndex="3" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="1" GridPane.rowIndex="4" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="3" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#dot" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="." GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="=" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Button contentDisplay="CENTER" onAction="#specialNegative" prefHeight="80.0" prefWidth="90.0" styleClass="special" text="+/-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button contentDisplay="CENTER" onAction="#specialModulo" prefHeight="80.0" prefWidth="90.0" styleClass="special" text="\%" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button contentDisplay="CENTER" onAction="#operators" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="7" GridPane.rowIndex="2" />
+            <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button contentDisplay="CENTER" onAction="#operators" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="4" GridPane.rowIndex="3" />
+            <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button contentDisplay="CENTER" onAction="#operators" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="1" GridPane.rowIndex="4" />
+            <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button contentDisplay="CENTER" onAction="#digit" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="3" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button contentDisplay="CENTER" onAction="#operators" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button contentDisplay="CENTER" onAction="#dot" prefHeight="80.0" prefWidth="90.0" styleClass="digit" text="." GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#digit" styleClass="digit" text="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Button contentDisplay="CENTER" onAction="#operators" prefHeight="80.0" prefWidth="90.0" styleClass="operators" text="=" GridPane.columnIndex="3" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </children>
