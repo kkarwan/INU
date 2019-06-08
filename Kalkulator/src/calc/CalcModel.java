@@ -18,7 +18,7 @@ public class CalcModel {
 		}
 		case "%": return number1 % number2;
 		}
-		System.out.println("Nieznany operator: " + operator);
+//		System.out.println("Nieznany operator: " + operator);
 		return 0;
 	}
 

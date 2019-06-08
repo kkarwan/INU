@@ -24,7 +24,6 @@ public class CalcController2 {
 	private void digit(ActionEvent event) {
 
 		if (start) {
-			//output.setText("");
 			start = false;
 		}
 		String value = ((Button) event.getSource()).getText();
