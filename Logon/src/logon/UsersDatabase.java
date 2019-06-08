@@ -25,6 +25,8 @@ public class UsersDatabase {
 			addUserWithPassword("tester.nowy", "nowyp");
 			addUserWithPassword("olek.jasny", "jasnypp");
 			addUserWithPassword("iwona.mila", "mialp");
+		} else {
+			addUserWithPassword("x", "x");
 		}
 	}
 

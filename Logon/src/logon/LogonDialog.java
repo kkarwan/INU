@@ -37,6 +37,7 @@ public class LogonDialog {
 		dialog.setTitle("Logowanie");
 		dialog.setHeaderText(naglowek);
 		dialog.getDialogPane().getButtonTypes().addAll(btnOK, btnCancel);
+		
 
 		cbxEnv = new ChoiceBox<>(FXCollections.observableArrayList(Environment.values()));
 		cbxEnv.valueProperty().addListener((observable, oldVal, newVal) -> cbxEnvChange(newVal));
@@ -59,7 +60,8 @@ public class LogonDialog {
 		cbxEnv.setValue(Environment.Produkcyjne);
 
 		Optional<Pair<Environment, String>> result = dialog.showAndWait();
-
+		
+		
 		if (result.toString().contains("Logon")) {
 			if (usersDatabase.checkPassword(cbxUsers.getValue().toString(), passField.getText())) {
 				System.out.println("User: " + cbxUsers.getValue().toString() + " zalogowany");
@@ -69,19 +71,19 @@ public class LogonDialog {
 		}
 
 	}
-
+	// definicja sluchaczy
 	private void cbxEnvChange(Environment value) {
-
 		cbxUsers.getItems().clear();
+		passField.clear();
+		passField.setDisable(true);
 		usersDatabase.defaultUsers(cbxEnv.getValue());
-
 		for (String s : usersDatabase.getUsers().keySet()) {
 			cbxUsers.getItems().add(s);
 		}
 	}
 
 	private void cbxUsers(String value) {
-		if (value.equals("")) {
+		if (cbxUsers.getProperties().isEmpty()) {
 			passField.setDisable(true);
 		} else {
 			passField.setDisable(false);
@@ -89,7 +91,7 @@ public class LogonDialog {
 	}
 
 	private void setIconHeader() {
-		dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Login_64x.png"))));
+		dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("img/Login_64x.png"))));
 	}
 
 	private void setGridLayout() {
@@ -107,6 +109,5 @@ public class LogonDialog {
 		grid.setVgap(10);
 		grid.setPadding(new Insets(20, 50, 20, 50));
 		dialog.getDialogPane().setContent(grid);
-
 	}
 }
